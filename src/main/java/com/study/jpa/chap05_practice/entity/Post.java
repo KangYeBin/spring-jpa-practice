@@ -39,7 +39,7 @@ public class Post {
     @CreationTimestamp
     private LocalDateTime updateDate;   // 수정 시간
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", orphanRemoval = true) // 부모가 삭제되면 자식 객체도 삭제되도록 한다
     @Builder.Default // Builder 패턴으로 객체를 생성할 때, 특정 필드를 직접 지정한 값으로 초기화하는 것을 강제
     List<HashTag> hashTags = new ArrayList<>();
 
